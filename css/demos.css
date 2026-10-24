@@ -1,0 +1,74 @@
+/* =====================================================================
+   Mini-démos des projets. Chaque étape .s1 .s2 ... est ajoutée par js/demos.js
+   ===================================================================== */
+.demo {
+  --demo-h: 340px;
+  background: var(--bg); color: var(--text);
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .22);
+  font-size: 13px; line-height: 1.35;
+}
+.demo-bar { display: flex; align-items: center; gap: 5px; padding: 7px 10px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.demo-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+.demo-bar span { margin-left: 8px; font-size: 11px; color: var(--muted); background: var(--bg); padding: 1px 10px; border-radius: 6px; }
+.demo-body { height: var(--demo-h); position: relative; overflow: hidden; }
+.demo * { transition-timing-function: cubic-bezier(.2, .8, .2, 1); }
+
+/* ---------- vraies captures (Gar'Oit, Kédzi) ---------- */
+.demo.shots .demo-body { background: #fff; }
+.shot { position: absolute; inset: 0; opacity: 0; transition: opacity .6s; }
+.shot.active { opacity: 1; }
+.shot img { width: 100%; display: block; }
+.shot:not(.scroll) img { height: 100%; object-fit: cover; object-position: left top; } /* remplit la fenêtre, sans bande vide */
+.shot.contain { background: #e9eef6; }
+.shot.contain img, .shot.contain video { object-fit: contain; object-position: center; } /* écran TV : affiché en entier */
+.shot video { width: 100%; height: 100%; display: block; }
+.demo.playing .shot.scroll.active img { animation: shot-scroll 9s ease-in-out .8s both; }
+.demo-kedzi.playing .shot.scroll.active img { animation-duration: 10s; }
+@keyframes shot-scroll { to { transform: translateY(calc(-100% + var(--demo-h))); } }
+
+/* ---------- Into PDF ---------- */
+.p-zone { position: absolute; inset: 12px; border: 2px dashed var(--line); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+.p-hint { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); transition: opacity .3s; }
+.demo.s1 .p-hint { opacity: 0; }
+.p-file {
+  display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 5px 8px; opacity: 0; transform: translateY(-30px) rotate(-4deg); transition: all .45s;
+}
+.demo.s1 .f1, .demo.s2 .f2, .demo.s3 .f3 { opacity: 1; transform: none; }
+.p-ext { font: 700 9px var(--font-body); color: #fff; padding: 3px 5px; border-radius: 4px; }
+.p-ext.docx { background: #6E645C; } .p-ext.xlsx { background: #3E7A4E; } .p-ext.png { background: #9C6B1F; }
+.p-ext.pdf { background: #C8553D; display: none; }
+.p-name em { font-style: normal; }
+.p-name .e2 { display: none; }
+.p-ok { margin-left: auto; color: #3E7A4E; font-weight: 700; opacity: 0; transition: opacity .3s; }
+.demo.s5 .p-ext:not(.pdf) { display: none; }
+.demo.s5 .p-ext.pdf, .demo.s5 .p-name .e2 { display: inline; }
+.demo.s5 .p-name .e1 { display: none; }
+.demo.s5 .p-ok { opacity: 1; }
+.p-bar { height: 6px; border-radius: 3px; background: var(--line); margin-top: auto; overflow: hidden; opacity: 0; transition: opacity .2s; }
+.p-bar i { display: block; height: 100%; width: 0; background: #C8553D; transition: width 1.2s linear; }
+.demo.s4 .p-bar { opacity: 1; }
+.demo.s4 .p-bar i { width: 100%; }
+.p-done { color: #3E7A4E; font-weight: 600; opacity: 0; transition: opacity .3s; }
+.demo.s6 .p-done { opacity: 1; }
+
+/* ---------- Bot SeLoger ---------- */
+.demo-seloger .demo-body { background: #1C1B19; }
+.t-term { padding: 12px 14px; font: 11.5px/1.7 ui-monospace, "Cascadia Code", Consolas, monospace; color: #E6DFD2; }
+.t-line { opacity: 0; transform: translateX(-6px); transition: all .3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.t-p { color: #D9A441; }
+.t-line b { color: #D9A441; }
+.t-line.ok { color: #9BC48A; }
+.demo.s1 .t1, .demo.s2 .t2, .demo.s3 .t3, .demo.s4 .t4, .demo.s5 .t5, .demo.s6 .t6 { opacity: 1; transform: none; }
+.t-prog { display: inline-block; width: 90px; height: 8px; border: 1px solid #6E645C; vertical-align: middle; margin-left: 6px; }
+.t-prog i { display: block; height: 100%; width: 0; background: #D9A441; transition: width 1s linear; }
+.demo.s3 .t-prog i { width: 100%; }
+
+@media (max-width: 700px) {
+  .demo { --demo-h: 240px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo * { transition: none !important; }
+}

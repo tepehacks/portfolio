@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pierre-Alexandre Tepe — Portfolio</title>
+  <meta name="description" content="Portfolio de Pierre-Alexandre Tepe, étudiant ingénieur en informatique à l'ESILV.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M5 90 L40 25 L55 50 L68 35 L95 90Z' fill='%232F4F3A'/><path d='M40 25 L48 40 L40 37 L33 39Z' fill='%23D9A441'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/mountain.css">
+  <link rel="stylesheet" href="css/demos.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="#top" class="logo">PA<span>.</span>T</a>
+    <nav class="nav">
+      <a href="#projects" data-i18n="navProjects"></a>
+      <a href="#top" data-i18n="navClimb"></a>
+      <a href="#education" data-i18n="navEducation"></a>
+      <a href="#contact" data-i18n="navContact"></a>
+    </nav>
+    <div class="toggles">
+      <button class="lang-switch" id="lang-switch" type="button" aria-label="Changer de langue / Switch language">
+        <span data-lang="fr">FR</span><span data-lang="en">EN</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ACCUEIL : moi + la montagne -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="pill"><span class="dot"></span><span data-i18n="open"></span></p>
+        <h1 id="hero-name"></h1>
+        <p class="hero-role" id="hero-role"></p>
+        <p class="hero-bio" id="hero-bio"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects" data-i18n="seeProjects"></a>
+          <a class="btn btn-ghost" id="cv-link" href="#" download data-i18n="downloadCv"></a>
+        </div>
+      </div>
+      <div class="hero-climb">
+        <h2 class="mountain-title" data-i18n="climbTitle"></h2>
+        <div class="mountain" id="mountain">
+          <div class="mountain-stage" id="mountain-stage"></div>
+          <div class="climb-cards" id="climb-cards"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETS (carrousel) -->
+    <section class="section" id="projects">
+      <div class="section-head">
+        <div>
+          <h2 data-i18n="projectsTitle"></h2>
+          <p class="lead" data-i18n="projectsLead"></p>
+        </div>
+        <div class="carousel-arrows">
+          <button class="arrow" id="car-prev" type="button">←</button>
+          <button class="arrow" id="car-next" type="button">→</button>
+        </div>
+      </div>
+      <div class="carousel" id="carousel" tabindex="0" aria-roledescription="carousel">
+        <div class="carousel-track" id="projects-track"></div>
+      </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </section>
+
+    <!-- FORMATION + COMPÉTENCES -->
+    <section class="section" id="education">
+      <h2 data-i18n="educationTitle"></h2>
+      <ol class="timeline" id="education-list"></ol>
+
+      <div class="extras">
+        <div class="extra">
+          <h3 data-i18n="skillsTitle"></h3>
+          <ul class="tags" id="skills-list"></ul>
+        </div>
+        <div class="extra">
+          <h3 data-i18n="languagesTitle"></h3>
+          <ul class="plain" id="languages-list"></ul>
+        </div>
+        <div class="extra">
+          <h3 data-i18n="interestsTitle"></h3>
+          <ul class="plain" id="interests-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <h2 data-i18n="contactTitle"></h2>
+      <p class="lead" data-i18n="contactLead"></p>
+      <div class="contact-links" id="contact-links"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Pierre-Alexandre Tepe · <span data-i18n="footer"></span></p>
+  </footer>
+
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="data/content.js"></script>
+  <script src="js/demos.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/mountain3d.js"></script>
+</body>
+</html>

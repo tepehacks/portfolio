@@ -1,0 +1,81 @@
+/* ---------- la montagne 3D ---------- */
+.mountain { position: relative; width: 100%; }
+.mountain-stage {
+  position: relative;
+  height: clamp(480px, 76vh, 700px);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: linear-gradient(var(--sky-top), var(--sky-bottom) 75%);
+}
+.mountain-stage canvas { display: block; width: 100%; height: 100%; }
+.mountain { touch-action: pan-y; }
+.hero-climb { min-width: 0; }
+.mountain-title {
+  margin: 0 0 14px; font: 700 clamp(22px, 2.2vw, 30px) var(--font-title); letter-spacing: -0.01em;
+  display: flex; align-items: center; gap: 10px;
+}
+.mountain-title::before { content: "⛰"; font-size: .9em; }
+
+/* ---------- cartes accrochées à la 3D ---------- */
+.climb-cards { position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: var(--radius); }
+.climb-card {
+  position: absolute;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 7px 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  pointer-events: auto;
+  cursor: default;
+  white-space: nowrap;
+  transition: box-shadow .2s;
+  will-change: left, top;
+  z-index: 1;
+}
+.climb-card:hover, .climb-card:focus-within { z-index: 3; box-shadow: 0 10px 30px rgba(0, 0, 0, .18); }
+.climb-card.right, .climb-card.left { transform: translateY(-50%); } /* position horizontale calculée en JS */
+.climb-card.top   { transform: none; } /* position calculée en JS, au-dessus du point */
+.climb-card.off { opacity: 0; pointer-events: none; }
+
+.climb-card .label { display: flex; align-items: center; gap: 7px; }
+.climb-card .label b { font: 700 15px var(--font-title); }
+.climb-card .goal-flag { width: 30px; height: 30px; flex-shrink: 0; margin: -4px -2px -4px -4px; }
+.climb-card .label small { color: var(--muted); font-size: 12px; }
+.climb-card .num {
+  display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent-2); color: #FFFDF8; font: 700 11px var(--font-title);
+}
+/* le détail s'ouvre au survol / au focus */
+.climb-card .more { display: none; white-space: normal; width: 240px; padding-top: 8px; margin-top: 8px; border-top: 1px solid var(--line); }
+.climb-card:hover .more, .climb-card:focus-within .more { display: block; }
+.climb-card .role { font-weight: 600; margin-bottom: 4px; }
+.climb-card .more p { margin: 0 0 8px; color: var(--muted); }
+.climb-card .more h3 { font-size: 15px; margin-bottom: 4px; }
+.climb-card .tags li { font-size: 11px; padding: 2px 8px; }
+
+.climb-card.goal-card { border: 2px dashed var(--accent); }
+.climb-card.goal-card .btn { margin-top: 2px; padding: 7px 14px; font-size: 13px; }
+
+.climb-card.me-card {
+  padding: 4px 12px; border-radius: 999px; font-weight: 600;
+  background: var(--text); color: var(--bg); border: none;
+}
+
+/* ---------- mobile (ou sans WebGL) : liste complète sous la montagne ---------- */
+@media (max-width: 900px) {
+  .mountain-stage { height: 420px; }
+  .climb-cards { position: static; display: flex; flex-direction: column; gap: 10px; margin-top: 14px; overflow: visible; }
+  .climb-card, .climb-card.left, .climb-card.right, .climb-card.off {
+    position: static; transform: none; opacity: 1; pointer-events: auto; white-space: normal; padding: 12px 14px;
+  }
+  .climb-card .more { display: block; width: auto; }
+  .climb-card.me-card { display: none; }
+}
+.mountain.flat .mountain-stage { display: none; }
+.mountain.flat .climb-cards { position: static; display: flex; flex-direction: column; gap: 10px; overflow: visible; }
+.mountain.flat .climb-card { position: static; transform: none; white-space: normal; padding: 12px 14px; }
+.mountain.flat .climb-card .more { display: block; width: auto; }
+.mountain.flat .climb-card.me-card { display: none; }

@@ -1,0 +1,31 @@
+/* =====================================================================
+   THÈME (sombre uniquement) — change les couleurs ici et tout le site suit.
+   Palette : forêt & ocre (aucun violet, aucun bleu)
+   ===================================================================== */
+:root {
+  --bg: #161A16;          /* forêt de nuit */
+  --surface: #1F241F;     /* cartes */
+  --text: #EFE9DC;        /* crème */
+  --muted: #A8A291;
+  --line: #2F362E;
+  --primary: #D9A441;     /* ocre */
+  --primary-ink: #161A16;
+  --accent: #D9A441;      /* ocre */
+  --accent-2: #E07A5F;    /* terracotta, pour varier */
+
+  /* montagne */
+  --sky-top: #1B2420;
+  --sky-bottom: #161A16;
+  --sun: #EFE9DC;
+  --range-back: #2A3529;
+  --mount: #3E5A3D;
+  --mount-shade: #324B32;
+  --snow: #DCD6C8;
+  --trail: #EFE9DC;
+
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+  --font-title: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  color-scheme: dark;
+}
