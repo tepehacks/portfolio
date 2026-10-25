@@ -212,3 +212,50 @@ main { overflow-x: clip; }
   .toggles { margin-left: auto; }
   .section { padding-top: 72px !important; }
 }
+
+/* =====================================================================
+   VERSION MOBILE (téléphones) — même site, en plus compact
+   ===================================================================== */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .topbar { padding-top: 10px; padding-bottom: 10px; }
+  .section { padding-top: 56px !important; }
+  .section h2 { font-size: 30px; }
+  .lead { font-size: 16px; margin: 6px 0 22px; }
+
+  /* accueil */
+  .hero { padding-top: 32px !important; gap: 28px; }
+  .pill { font-size: 13px; margin-bottom: 16px; }
+  .hero h1 { font-size: 40px; }
+  .hero-role { font-size: 17px; margin-top: 8px; }
+  .hero-bio { font-size: 15px; margin: 14px 0 22px; }
+  .hero-actions { gap: 10px; }
+  .hero-actions .btn { flex: 1 1 0; justify-content: center; padding: 11px 14px; font-size: 14px; }
+
+  /* projets : on navigue au doigt et avec les points, les flèches sont inutiles */
+  .carousel-arrows { display: none; }
+  .slide { width: 92%; border-radius: 16px; transform: translateX(calc(-50% + var(--d, 0) * 100% + var(--drag, 0px))) scale(calc(1 - var(--ad, 0) * .06)); }
+  .slide-media { padding: 12px; }
+  .slide-info { padding: 18px 16px 20px; gap: 12px; }
+  .slide-count { font-size: 24px; }
+  .slide-count span { font-size: 13px; }
+  .card-head h3 { font-size: 23px; }
+  .slide-info p { font-size: 14.5px; line-height: 1.55; }
+  .tags li { font-size: 12px; padding: 2px 8px; }
+  .carousel-dots { margin-top: 18px; }
+
+  /* formation & à côté */
+  .timeline { padding-left: 22px; }
+  .timeline li::before { left: -30px; }
+  .timeline h3 { font-size: 18px; }
+  .extras { gap: 14px; margin-top: 28px; }
+  .extra { padding: 18px; }
+
+  /* contact */
+  .contact { padding-bottom: 56px !important; }
+  .contact h2 { font-size: 26px; }
+  .contact .lead { font-size: 15px; }
+  .contact-links .btn { font-size: 14px; padding: 11px 16px; }
+  .contact-links .btn-primary { width: 100%; justify-content: center; }
+  .footer { font-size: 13px; }
+}
