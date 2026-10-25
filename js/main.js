@@ -9,7 +9,7 @@
   };
 
   const App = {
-    lang: store.get("lang") || ((navigator.language || "fr").startsWith("fr") ? "fr" : "en"),
+    lang: "fr", // le site s'ouvre toujours en français ; le bouton FR / EN permet de passer en anglais
     // Renvoie le texte dans la langue courante ({ fr, en } ou simple chaîne)
     t(v) { return typeof v === "string" ? v : (v && (v[App.lang] || v.fr)) || ""; },
     ui(key) { return UI[App.lang][key]; },
@@ -261,7 +261,6 @@
   // Bouton FR / EN
   document.getElementById("lang-switch").addEventListener("click", () => {
     App.lang = App.lang === "fr" ? "en" : "fr";
-    store.set("lang", App.lang);
     render();
   });
 

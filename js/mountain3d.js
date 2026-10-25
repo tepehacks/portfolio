@@ -31,9 +31,24 @@
     return `<lord-icon class="goal-flag" src="https://cdn.lordicon.com/hcfdembi.json" trigger="loop" state="loop-cycle" colors="${colors}"></lord-icon>`;
   }
 
+  const campTags = document.createElement("div");
+  campTags.className = "camp-tags";
+  stage.appendChild(campTags);
+  let tags = {};
+
   function renderCards() {
     const t = App.t, esc = App.esc;
     cardsBox.innerHTML = "";
+    // version mobile : une petite étiquette (entreprise + poste) posée sur chaque camp
+    campTags.innerHTML = "";
+    tags = {};
+    experiences.forEach((x, i) => {
+      const el = document.createElement("div");
+      el.className = "camp-tag";
+      el.innerHTML = `<span class="num">${i + 1}</span><span><b>${esc(x.company)}</b><small>${esc(t(x.role))}</small></span>`;
+      campTags.appendChild(el);
+      tags["exp" + i] = el;
+    });
     cards = {};
     const add = (key, cls, side, html) => {
       const el = document.createElement("div");
@@ -661,8 +676,20 @@
   //  Étiquettes collées à la 3D
   // ------------------------------------------------------------------
   const proj = new THREE.Vector3();
+  function positionTags() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    for (const key in tags) {
+      const el = tags[key];
+      proj.copy(anchors[key]).project(camera);
+      const x = ((proj.x + 1) / 2) * w, y = ((1 - proj.y) / 2) * h;
+      // au-dessus du drapeau du camp, centrée, sans cacher la tente ni sortir du cadre
+      const wEl = el.offsetWidth, hEl = el.offsetHeight;
+      el.style.left = Math.max(6, Math.min(w - 6 - wEl, x - wEl / 2)) + "px";
+      el.style.top = Math.max(6, y - hEl - 10) + "px";
+    }
+  }
   function positionCards() {
-    if (narrow.matches) return;
+    if (narrow.matches) { positionTags(); return; }
     const w = stage.clientWidth, h = stage.clientHeight;
     for (const key in cards) {
       const a = anchors[key];

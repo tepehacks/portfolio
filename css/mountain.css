@@ -93,3 +93,22 @@
   .climb-card .more h3 { font-size: 14px; }
   .climb-card .goal-flag { width: 24px; height: 24px; }
 }
+
+/* ---------- étiquettes des camps sur la carte (mobile uniquement) ---------- */
+.camp-tags { display: none; }
+@media (max-width: 900px) {
+  .camp-tags { display: block; position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+  .camp-tag {
+    position: absolute; display: flex; align-items: center; gap: 6px; max-width: 70%;
+    padding: 4px 9px 4px 5px; border-radius: 9px; font-size: 11px; line-height: 1.2;
+    background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(4px);
+    border: 1px solid var(--line); box-shadow: var(--shadow);
+  }
+  .camp-tag b { display: block; font: 700 12px var(--font-title); }
+  .camp-tag small { display: block; color: var(--muted); font-size: 10.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .camp-tag > span:last-child { min-width: 0; }
+  .camp-tag .num {
+    flex-shrink: 0; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent-2); color: #FFFDF8; font: 700 10px var(--font-title);
+  }
+}
