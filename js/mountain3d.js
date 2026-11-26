@@ -49,6 +49,12 @@
       campTags.appendChild(el);
       tags["exp" + i] = el;
     });
+    // et au sommet : l'alternance recherchée
+    const g = document.createElement("div");
+    g.className = "camp-tag goal-tag";
+    g.innerHTML = `${flagIcon()}<span><b>${esc(t(goal.mobileTitle))}</b><small>${esc(t(goal.mobile))}</small></span>`;
+    campTags.appendChild(g);
+    tags.goal = g;
     cards = {};
     const add = (key, cls, side, html) => {
       const el = document.createElement("div");

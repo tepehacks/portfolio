@@ -111,4 +111,7 @@
     flex-shrink: 0; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%;
     background: var(--accent-2); color: #FFFDF8; font: 700 10px var(--font-title);
   }
+  .camp-tag.goal-tag { border: 1.5px dashed var(--accent); max-width: 86%; }
+  .camp-tag.goal-tag small { white-space: normal; color: var(--text); }
+  .camp-tag .goal-flag { width: 22px; height: 22px; flex-shrink: 0; }
 }

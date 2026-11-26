@@ -132,6 +132,9 @@ window.CONTENT = {
   climb: {
     goal: {
       short: { fr: "Alternance Software Eng. / Data", en: "Work-study Software Eng. / Data" },
+      // étiquette au sommet sur mobile
+      mobile: { fr: "Software Engineering ou Data Analyst", en: "Software Engineering or Data Analyst" },
+      mobileTitle: { fr: "Alternance · octobre 2027", en: "Work-study · October 2027" },
       when: { fr: "Octobre 2027", en: "October 2027" },
       title: { fr: "À la recherche d'une alternance : Software Engineering ou Data Analyst", en: "Looking for a work-study position: Software Engineering or Data Analyst" },
       details: {
